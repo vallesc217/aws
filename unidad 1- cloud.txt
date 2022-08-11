@@ -1,0 +1,5 @@
+**Scalability** is the ability of your infrastructure to grow on demand.
+es la capacidad de su infraestructura para crecer según la demanda.
+
+**Agility** with cloud computing refers to your ability to innovate, experiment, and quickly deliver new services to your clients.
+con la computación en la nube se refiere a su capacidad para innovar, experimentar y brindar rápidamente nuevos servicios a sus clientes.
