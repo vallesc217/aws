@@ -1,0 +1,65 @@
+Iam
+es un servicio de autenticación y autorización que le permite decidir quién o qué puede acceder a 
+los servicios de AWS en su cuenta (conocido como autenticación) y qué pueden hacer estas entidades en su cuenta.
+
+Las políticas de IAM son objetos adjuntos a una identidad de IAM dada
+
+Estas políticas definen lo que la identidad puede o no puede hacer dentro de la cuenta de AWS y se escriben como documentos JSON.
+
+informes de credenciales
+
+	Polices:
+
+	- **Identity-based policies**
+    
+	    estas son políticas adjuntas a sus identidades de IAM que especifican lo que esas identidades pueden o no pueden hacer en su cuenta de AWS.
+    
+	    - Managed AWS policies: políticas estándar preconfiguradas conpermisos que proporciona AWS.
+    	    - Customer-managed policies: los clientes pueden crear sus propias políticas administradas y luego adjuntarlas a cualquier identidad de IAM.
+    	    - Inline polices: estas políticas se crean y adjuntan directamente a la identidad de IAM. 
+                              demasiadas políticas en línea pueden ser más difíciles de administrar y deben usarse con moderación.
+
+
+	- **Resource-based policies (politicas basadas en recurso): Para algunos servicios de AWS, puede otorgar acceso entre cuentas a sus recursos. 
+								    Para hacer esto, adjunte una política directamente al recurso que desea compartir, 
+								    en lugar de usar un rol como proxy. El recurso que desea compartir debe admitir políticas 
+								    basadas en recursos . A diferencia de una política basada en identidad, una política basada en recursos 
+								    especifica quién (qué principal) puede acceder a ese recurso.
+
+	- **Permission boundaries (limites de permiso):** AWS admite límites de permisos para entidades de IAM (usuarios o roles). Un límite de permisos 
+							  es una característica avanzada para usar una política administrada para establecer los permisos 
+							  máximos que una política basada en identidad puede otorgar a una entidad de IAM. El límite de 
+							  permisos de una entidad le permite realizar solo las acciones permitidas tanto por sus políticas 
+							  basadas en identidad como por sus límites de permisos.
+							  
+							  Puede utilizar una política administrada por AWS o una política administrada por el cliente para 
+							  establecer el límite de una entidad de IAM (usuario o rol). Esa política limita los permisos máximos 
+							  para el usuario o rol.
+
+	- **Organization Service Control Policies** (**SCPs**): le permiten definir los permisos máximos para la cuenta.
+								miembros de una organización. Sin embargo, por sí mismos no pueden otorgar permisos.
+	
+	- **Access Control Lists (ACLs)**: Las listas de control de acceso (ACL) de Amazon S3 le permiten administrar el acceso a depósitos y objetos. 
+					   Cada depósito y objeto tiene una ACL adjunta como subrecurso. Define a qué cuentas o grupos de AWS se les 
+					   otorga acceso y el tipo de acceso. Cuando se recibe una solicitud para un recurso, Amazon S3 verifica la ACL 
+					   correspondiente para verificar que el solicitante tenga los permisos de acceso necesarios.
+
+					   Una ACL puede tener hasta 100 concesiones.
+					   Un beneficiario puede ser una cuenta de AWS o uno de los grupos predefinidos de Amazon S3. Concede permiso a 
+					   una cuenta de AWS utilizando la dirección de correo electrónico o el ID de usuario canónico. Sin embargo, si 
+					   proporciona una dirección de correo electrónico en su solicitud de concesión, Amazon S3 encuentra el ID de 
+					   usuario canónico para esa cuenta y lo agrega a la ACL. Las ACL resultantes siempre contienen el ID de usuario 
+					   canónico de la cuenta de AWS, no la dirección de correo electrónico de la cuenta de AWS.
+
+					   Cuando se utilizan ACL, un beneficiario puede ser una cuenta de AWS o uno de los grupos predefinidos de Amazon S3. 
+					   Sin embargo, el beneficiario no puede ser un usuario de IAM.
+
+
+	- **Session policies:**	Una política de sesión es una política de permisos en línea que los usuarios pasan en la sesión cuando asumen el rol. 
+				Puede pasar la política usted mismo o puede configurar su agente para insertar la política cuando sus identidades se 
+				federen en AWS (si tiene un agente de identidad configurado en su entorno).
+
+				Una política de sesión es una política en línea que puede crear sobre la marcha y pasar a la sesión durante la asunción 
+				de roles para ampliar el alcance de los permisos de la sesión de roles. Los permisos efectivos de la sesión son la intersección 
+				de las políticas basadas en identidad del rol y la política de sesión. Los permisos máximos que puede tener una sesión son los 
+				permisos que permiten las políticas basadas en la identidad del rol.
