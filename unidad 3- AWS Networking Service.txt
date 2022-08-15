@@ -1,0 +1,56 @@
+- ROUTE 53
+    
+    AWS Route53 es el DNS global de Amazon, que es un servicio para ayudar a traducir nombres en una dirección IP
+
+	Amazon Route53 ofrece tres funciones principales:
+
+		1. Registro de Dominio
+    
+    		Antes de que pueda usar un nombre de dominio para su sitio web o aplicación web que los miembros del 
+		público puede acceder, debe registrar un nombre de su elección con un registrador de dominios. 
+    
+		    - Public hosted zone: este es un contenedor que le permite definir cómo desea enrutar el tráfico 
+			para su dominio nombre a través de la Internet pública.
+		    - Private hosted zone: como una o más de sus VPC. Route53 enrutará el tráfico del nombre de dominio 
+			a los recursos configurados en sus VPC en función de los registros de recursos que cree.
+		    - Routing policies: Estas políticas de enrutamiento le permiten definir varias reglas que ofrecen la
+			posibilidad de crear soluciones de alta disponibilidad o redirigir a los clientes a los recursos 
+			que están más cerca de su ubicación y así reducir la latencia.
+
+		2. DNS hostnames:
+    
+		AWS proporciona un servidor DNS (Amazon Route53 Resolver) para su VPC. Esto permite que AWS configurar 
+		nombres de host DNS para las instancias que implementa en su VPC.
+
+		3. Health checks
+    
+		Puede usar Route53 para realizar comprobaciones de estado en sus recursos, como servidores web, balanceadores 
+		de carga y sitios web estáticos S3. Según los resultados de sus comprobaciones, puede tomar las medidas adecuadas 
+		y redirigir el tráfico según sea necesario para garantizar la alta disponibilidad de los servicios.
+    
+    		- **Comprobaciones de estado que monitorean un punto final** : esto monitorea un punto final que especifique, como 
+		una dirección IP o un nombre de dominio.
+		- **Comprobaciones de estado que supervisan otras comprobaciones de estado** : puede optar por supervisar varios recursos 
+		y determinar el estado general de su colección de recursos en función de una cantidad mínima de recursos que están en buen estado.
+		- **Comprobaciones de estado que supervisan las alarmas de CloudWatch** : puede crear alarmas de CloudWatch que supervisen 
+		las métricas de sus recursos, por ejemplo, la cantidad de instancias EC2 en buen estado detrás de un balanceador de carga elástico.
+		Luego puede configurar Route53 para monitorear el mismo flujo de datos que CloudWatch monitorea para las alarmas y marcará el 
+		recurso como en mal estado si se cruzan los valores de umbral.
+
+	Routing policies
+
+		Además de los servicios estándar de resolución de nombres, como apuntar su nombre de dominio a una IP específica dirección, 
+		Amazon Route53 también ofrece varias políticas y configuraciones de enrutamiento complejas.
+
+		- **Política de enrutamiento simple:** este recurso le permite asignar un nombre de dominio a un solo recurso, como una dirección
+		IP de un servidor web o un extremo DNS de un balanceador de carga elástico
+		- **Política de enrutamiento de conmutación** por error: para ofrecer alta disponibilidad, puede alojar dos copias los recursos 
+		a través de diferentes Regiones. Un conjunto de recursos se designará como recurso principal y el otro como recurso secundario.
+		- **Política de enrutamiento de geolocalización:** esta política de enrutamiento le permite enrutar el tráfico según la ubicación 
+		geográfica de sus usuarios, como continente, país o estado (en los Estados Unidos). La ubicación de sus usuarios se determina a 
+		partir del origen de las consultas de DNS para su servicio web.
+		- **Política de enrutamiento de latencia:** esta política de enrutamiento es particularmente útil cuando tiene recursos desplegados
+		en varias regiones y desea enrutar el tráfico de sus usuarios a la región que ofrece la latencia más baja.
+		- **Política de enrutamiento ponderado: e**sta política de enrutamiento le permite enrutar diferentes proporciones de su tráfico 
+		total a diferentes recursos asociados con un solo dominio. Por ejemplo, puede elegir enrutar las tres cuartas partes de su tráfico 
+		a una copia de su recurso y la cuarta parte restante a otra
