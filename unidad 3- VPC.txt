@@ -1,0 +1,72 @@
+- VPC
+    
+    Amazon ofrece dos tipos de servicios de seguridad para permitirle crear un entorno altamente seguro, lo que garantiza
+    que solo se permite el nivel de acceso y tráfico requerido.
+    
+    1. Security groups
+        
+        Un grupo de seguridad es un firewall que está diseñado para permitirle configurar qué tipo de tráfico permite, 
+	entrante y saliente, a sus instancias EC2. Cuando lanza una instancia EC2, debe asignar al menos un grupo de 
+	seguridad, que debe contener las reglas necesarias para cualquier tráfico entrante y saliente que desee permitir.
+        
+        - Puede configurar reglas de *permiso de denegación* pero no puede configurar reglas de denegación explícitas.
+        - Puede especificar reglas separadas para el tráfico entrante y saliente.
+        - Puede filtrar el tráfico según protocolos y números de puerto. También puede especificar fuentes y destinos
+
+    2. 	Network Access Control Lists (NACLs)
+    
+    Los NACL son otro tipo de servicio de firewall diseñado para proteger subredes enteras. En lugar de ofrecer 
+	protección a nivel de instancia, se pueden configurar para permitir o denegar que el tráfico llegue a las 
+	subredes, dentro de las cuales implementa sus instancias EC2.
+
+	Network Address Translation (NAT)
+
+	El servicio NAT transmite las solicitudes de las instancias EC2 en la subred privada a Internet, actuando como 
+	un proxy.
+
+	VPC peering
+
+	Una interconexión de VPC connection es una conexión de red privada entre dos VPC. El servicio le permite conectar
+	varias VPC para que las instancias de una VPC puedan acceder a los recursos de otra VPC.
+
+	VPC transit gateway
+
+	Con AWSTransit Gateway, puede conectar sus VPC individuales a través de la puerta de enlace en un modelo 
+	hub-and-spoke. Esto simplifica enormemente la arquitectura de su red, ya que cada nueva VPC que se interconecta 
+	con la puerta de enlace necesita solo una única conexión para poder enrutar el tráfico a las otras VPC, siempre 
+	que las configuraciones necesarias de la tabla de enrutamiento lo permitan. 
+
+
+	Virtual Private Networks (VPNs)
+
+	Una VPN es un túnel seguro encriptado de sitio a sitio establecido entre dos puntos finales a través de la 
+	Internet pública. Ofrece cifrado AES de **seguridad de protocolo de Internet (IPsec)** de 128 o 256 bits , 
+	lo que significa que puede transferir datos entre los dos puntos finales de forma segura.
+
+	- Para configurar una conexión VPN entre su red local y la VPC, debe crear una **puerta de enlace privada 
+	virtual** ( **VPG** ) y adjuntarla a su VPC. También necesitarás configurar una puerta de enlace de cliente, 
+	que es un dispositivo físico o virtual ubicado en la red local que se conecta al VPG a través de Internet.
+
+	**Direct Connect** 
+
+	es un servicio que le permite conectar su centro de datos corporativo a su VPC y los servicios públicos 
+	ofrecidos por AWS a través de una conexión privada dedicada que evita Internet por completo.
+
+	*requisito de establecer el cableado de fibra óptica necesario entre su oficina corporativa (o centro de datos) 
+	y un socio local de Amazon Direct Connect*
+
+
+- CloudFront
+    
+    Amazon CloudFront es un CDN que te ayuda a distribuir tu contenido digital estático y dinámico globalmente con 
+	conexiones de baja latencia AWS CloudFront utiliza edge locations de AWS y cachés de borde regionales para 
+	almacenar contenido en caché más cerca de las ubicaciones de sus usuarios finales.
+
+- API Gateway
+    
+    Sin una puerta de enlace API, su desarrollador frontend (que crea la interfaz de usuario frontend) debería conocer 
+	todas las API backend y compilar la aplicación para llamar a varios microservicios, a fin de proporcionar una 
+	funcionalidad completa.
+    
+    Para mejorar la capacidad de respuesta de las aplicaciones, Amazon API Gateway ofrece funciones para optimizar sus 
+	API, como el almacenamiento en caché de respuestas y la compresión de carga útil.
