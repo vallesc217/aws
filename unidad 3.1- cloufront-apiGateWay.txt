@@ -1,0 +1,11 @@
+Amazon CLoud front
+Es un CDN  que te ayuda a distribuir tu contenido digital estatico y dinamico globalmente 
+con conexiones de baja latencia AWS CloudFront utiliza edge location de AWS y caches de borde
+regionales para almacenar contenido en cache mas cerca de las ubicaciones de sus usuarios
+
+API Gateway
+Sin una puerta de enlace de API, su desarrollador frontend (que crea la interfaz de usuario
+frontend) deberia conocer todas las API backend y compilar la aplicacion para llamar a varios microserviios,
+a fin de proporcionar una funcionalidad completa.
+Para mejorar la capacidad de respuesta de las aplicaciones, Amazon API Gateway ofrece funciones
+para optimizar sus API, como el almacenamiento en cache de respuestas y la compresión de carga útil.

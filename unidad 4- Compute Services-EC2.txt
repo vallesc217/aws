@@ -1,0 +1,20 @@
+AWS COMPUTE SERVICES
+EC2
+	Cuando lanza una instancia debe seleccionar una AMI para configurar esa instancia. Por ejemplo,
+	una AMI puede contener una imagen del sistema operativo Linux y cualquier aplicación adicional
+	para configurar una instancia como servidor web.
+	
+	Amazon Machine Images (AMIS)
+	AWS Marketplace: esta es una tienda de SW administrada por AWS donde los proveedores externos
+	pueden vender sus aplicaciones, a menudo empaquetadas como AMI listas para usar. Empresas como
+	F5, Citrix, Orale y McAfee
+
+	Community AMIS: Es posible hacer públicas sus AMIS y asi hacerlas accesibles a la comunidad en general
+	a traves del enlace Community AMI(Centos)
+	En lugar de tener que configurar manualmente cada instancia nueva para cumplir con sus requisitos especificos,
+	puede configurar una instancia EC2 tal como la necesita (con los parches del sistema operativo, las aplicaciones,
+	el SW antivirus, etc. correctos) y luego crear una AMI de eso.
+
+El almacenamiento en bloque le permite adjuntar volúmenes en bloque a sus instancia EC2. El volumen raiz aloja
+el sistema operativo desde el que arrancar sus servidor virtual, y los volumenes adicionales pueden alojar
+datos y aplicaciones para sus servidores.
